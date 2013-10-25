@@ -36,47 +36,17 @@ class MainHandler(webapp2.RequestHandler):
     path = os.path.join(os.path.dirname(__file__), 'index.html')
     self.response.out.write(template.render(path, template_values))
 
-# View user information(user/user_id)
-class UserHandler(webapp2.RequestHandler):
-  def get(self):
-    self.response.write('Hello user!')
-
-# View rival list of user(rival/user_id)
-class RivalHandler(webapp2.RequestHandler):
-  def get(self):
-      self.response.write('Hello rival!')
-
 # Register user
 class RegisterHandler(webapp2.RequestHandler):
   # if not user[google_user], redirect to register
   def get(self):
-    self.response.write('fill inputs')
+    self.response.set_status(403)
+    # self.response.write('INPUT')
   def post(self):
-    self.response.write('register in the content below')
-  def register(self):
-    self.response.write('Register finish. redirect to top.')
-
-# Register data to manager
-class UpdateHandler(webapp2.RequestHandler):
-  # input JSON data to textarea
-  def get(self):
-    self.response.write('Please input your data')
-  def post(self):
-    self.response.write('Register below')
-  def update(self):
-    self.response.write('Register finish')
-
-# Manage music data and user data
-class AdminHandler(webapp2.RequestHandler):
-  def get(self):
-    self.response.write('Hello admin!')
+    self.response.write(self.request.get('content'))
 
 # Like Twitter url mapping is best
 app = webapp2.WSGIApplication([
   ('/', MainHandler),
-  ('/user', UserHandler),
-  ('/rival', RivalHandler),
   ('/register', RegisterHandler),
-  ('/update', UpdateHandler),
-  ('/admin', AdminHandler),
 ], debug=True)

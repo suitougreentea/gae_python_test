@@ -1,11 +1,21 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Document</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+	<title>Document</title>
 </head>
 <body>
-  <p>{{ user }}</p>
-  <p><img src="res/img.png" alt="res" /></p>
+	<div class="container">
+
+		<p>{{ user }}</p>
+		<p><img src="res/img.png" class="img-responsive" alt="res" /></p>
+		<form action="/register" method="post">
+			<div><textarea class="form-control" name="content" rows="3" cols="60"></textarea></div>
+			<div><input type="submit" class="btn btn-default" value="Register"></div>
+		</form>
+	</div>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>
